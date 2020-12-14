@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
 			request.getSession().setAttribute("currentUser", username);
 			request.getSession().setAttribute("isAdmin", usuarioDao.isAdmin(username));
 			if (usuarioDao.isAdmin(username)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/saludoAdmin");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/saludoAdmin");
 				dispatcher.forward(request, response);
 			}else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/saludo");

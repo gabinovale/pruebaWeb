@@ -24,7 +24,11 @@
 						class="nav-link text-uppercase text-expanded" href="">Monedas</a>
 					</li>
 					<li class="nav-item px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="">Tiempo</a></li>
+						class="nav-link text-uppercase text-expanded" href="">Tiempo</a>
+					</li>
+					<li class="nav-item px-lg-4"><a
+						class="nav-link text-uppercase text-expanded" href="logout">Salir</a>
+					</li>
 				</ul>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import model.Atraccion;
 import model.Usuario;
 
 
@@ -21,7 +22,7 @@ public class HibernateUtil {
 
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.sqlite.JDBC");
-                settings.put(Environment.URL, "jdbc:sqlite:C:\\Users\\Martin\\eclipse-workspace\\Prueba2\\users.sqlite");
+                settings.put(Environment.URL, "jdbc:sqlite:C:\\Users\\Martin\\eclipse-workspace\\pruebaWeb3\\WebContent\\db\\TierraMedia.db");
                 settings.put(Environment.DIALECT, "com.enigmabridge.hibernate.dialect.SQLiteDialect");
 
                 settings.put(Environment.SHOW_SQL, "true");
@@ -31,6 +32,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
                 
                 configuration.addAnnotatedClass(Usuario.class);
+                configuration.addAnnotatedClass(Atraccion.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GeneratorType;
 
 @Entity
-@Table(name="users")
+@Table(name="usuario")
 public class Usuario {
 
 	public Usuario() { }
@@ -16,13 +16,13 @@ public class Usuario {
 	@Id
 	private int id;
 	
-	@Column(name = "username")
+	@Column(name = "nombre")
 	private String username;
 	
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name = "admin")
+	@Column(name = "is_admin")
 	private int admin;
 
 	public int getId() {

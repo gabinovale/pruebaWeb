@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.HibernateException;
+
+import dao.AtraccionDao;
+import dao.UsuarioDao;
+import model.Atraccion;
+import model.Usuario;
+
 /**
  * Servlet implementation class ListaAtracciones
  */
@@ -16,7 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 public class ListaAtracciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	private AtraccionDao atraccionDao;
 
+	public void init() {
+		atraccionDao = new AtraccionDao();
+	}
 
 
 	/**
@@ -24,11 +36,18 @@ public class ListaAtracciones extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String usuario = (String) request.getSession().getAttribute("currentUser");
-		request.setAttribute("usuario", usuario);
+
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/new-atraccion.jsp");
-		dispatcher.forward(request, response);
+		try {
+			List<Atraccion> atracciones = atraccionDao.all();
+			request.setAttribute("atracciones", atracciones);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/new-atraccion.jsp");
+			dispatcher.forward(request, response);
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
