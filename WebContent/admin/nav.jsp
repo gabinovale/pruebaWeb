@@ -15,13 +15,13 @@
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="lista-usuarios">Usuarios</a>
+						class="nav-link text-uppercase text-expanded" href="admin-lista-usuarios">Usuarios</a>
 					</li>
 					<li class="nav-item px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="promociones">Promociones</a>
+						class="nav-link text-uppercase text-expanded" href="admin-promociones">Promociones</a>
 					</li>
 					<li class="nav-item px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="atracciones">Atracciones</a>
+						class="nav-link text-uppercase text-expanded" href="admin-atracciones">Atracciones</a>
 					</li>
 					<li class="nav-item px-lg-4"><a
 						class="nav-link text-uppercase text-expanded" href="tipo-de-atracciones">Tipo de Atracciones</a>

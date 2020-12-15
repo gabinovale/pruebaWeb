@@ -60,7 +60,7 @@ public class UsuarioDao {
         return Collections.EMPTY_LIST;
     }
 	
-	public boolean isAdmin(String username) {
+	public String isAdmin(String username) {
 		Usuario user = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             user = (Usuario) session
@@ -69,12 +69,12 @@ public class UsuarioDao {
             		.uniqueResult();
 
             if (user != null && user.getAdmin()==1) {
-                return true;
+                return "true";
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return "false";
 	}
 	
 }

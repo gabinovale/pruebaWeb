@@ -18,7 +18,7 @@ import model.Promocion;
 /**
  * Servlet implementation class ListaPromociones
  */
-@WebServlet("/promociones")
+@WebServlet("/admin-promociones")
 public class ListaPromociones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

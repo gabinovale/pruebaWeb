@@ -33,8 +33,8 @@ public class Login extends HttpServlet {
 		if (usuarioDao.validate(username, password)) {
 			request.getSession().setAttribute("currentUser", username);
 			request.getSession().setAttribute("isAdmin", usuarioDao.isAdmin(username));
-			if (usuarioDao.isAdmin(username)) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/saludoAdmin");
+			if (usuarioDao.isAdmin(username).equals("true")) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin-saludo");
 				dispatcher.forward(request, response);
 			}else {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/saludo");

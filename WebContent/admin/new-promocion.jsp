@@ -24,6 +24,8 @@
 								<th>Cupo Disponible</th>
 								<th>Tipo de Atracción</th>
 								<th>Tipo de Promo</th>
+								<th> </th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -35,6 +37,8 @@
 									<td><c:out value="${promo.cupo}" /></td>
 									<td><c:out value="${promo.tipoAtraccion}" /></td>
 									<td><c:out value="${promo.tipoPromo}" /></td>
+									<td><button type="button" class="btn btn-warning">Modificar</button></td>
+									<td><button type="button" class="btn btn-danger">Eliminar</button></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -80,13 +84,20 @@
 										</div>
 									</div>
 									<div class="form-row">
-										<div class="col-md-4 mb-3">
-											<label for="validationDefault04">Cupo</label> <input
-												type="number" class="form-control" id="validationDefault04"
-												required>
+										<div class="col-md-6 mb-3">
+											<label for="validationDefault05">Tipo de Promo</label> 
+											<select
+												class="custom-select" id="validationDefault05" required=>
+												<option selected="" disabled="" value="">Elige
+													una...</option>
+												<option>Porcentual</option>
+												<option>Absoluta</option>
+												<option>AxB</option>
+											</select>
 										</div>
-										<div class="col-md-8 mb-3">
-											<label for="validationDefault05">Tipo de Atracción</label> <select
+										<div class="col-md-6 mb-3">
+											<label for="validationDefault05">Tipo de Atracción</label> 
+											<select
 												class="custom-select" id="validationDefault05" required=>
 												<option selected="" disabled="" value="">Elige
 													una...</option>

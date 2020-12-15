@@ -20,7 +20,7 @@ import model.Usuario;
 /**
  * Servlet implementation class ListaAtracciones
  */
-@WebServlet("/atracciones")
+@WebServlet("/admin-atracciones")
 public class ListaAtracciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

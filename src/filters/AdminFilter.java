@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter("/saludoAdmin")
+@WebFilter( {"/admin-saludo","/admin-atracciones","/admin-promoiones"})
 public class AdminFilter implements Filter {
 
     
@@ -25,9 +25,9 @@ public class AdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		boolean admin = (boolean) ((HttpServletRequest)request).getSession().getAttribute("isAdmin");
+		String admin = (String) ((HttpServletRequest)request).getSession().getAttribute("isAdmin");
 
-		if (admin) {
+		if (admin.equals("true")) {
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
 		} else {
