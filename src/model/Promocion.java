@@ -5,15 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="atraccion")
-public class Atraccion {
-	
-	public Atraccion() {
-		
+@Table(name="promocion")
+public class Promocion {
+
+	public Promocion() {
+
 	}
 	
 	@Id
@@ -34,6 +33,10 @@ public class Atraccion {
 	@ManyToOne
 	@JoinColumn(name="tipo_de_atraccion_id")
 	private TipoDeAtraccion tipoAtraccion;
+	
+	@ManyToOne
+	@JoinColumn(name="tipo_promo_id")
+	private TipoPromo tipoPromo;
 
 	@Column(name = "disponible")
 	private int disponible;
@@ -78,14 +81,20 @@ public class Atraccion {
 		this.cupo = cupo;
 	}
 
-	
-
 	public TipoDeAtraccion getTipoAtraccion() {
 		return tipoAtraccion;
 	}
 
 	public void setTipoAtraccion(TipoDeAtraccion tipoAtraccion) {
 		this.tipoAtraccion = tipoAtraccion;
+	}
+
+	public TipoPromo getTipoPromo() {
+		return tipoPromo;
+	}
+
+	public void setTipoPromo(TipoPromo tipoPromo) {
+		this.tipoPromo = tipoPromo;
 	}
 
 	public int getDisponible() {
@@ -97,5 +106,5 @@ public class Atraccion {
 	}
 	
 	
-	
+
 }
