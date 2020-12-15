@@ -77,4 +77,17 @@ public class UsuarioDao {
         return "false";
 	}
 	
+	public Usuario actual(String username) {
+		Usuario user = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            user = (Usuario) session
+            		.createQuery("FROM Usuario U WHERE U.username = :username")
+            		.setParameter("username", username)
+            		.uniqueResult();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return user;
+	}
 }

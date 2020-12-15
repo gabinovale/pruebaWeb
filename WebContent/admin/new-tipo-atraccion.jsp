@@ -14,39 +14,23 @@
 	<section class="page-section about-heading">
 		<div id="wrapper">
 			<div class="container">
-				<div id="tabla-atracciones" class="m-4">
+				<div id="tabla-tipos-de-atracciones" class="m-4">
 
 					<table class="table table-dark table-hover"
 						style="background-color: rgba(47, 23, 15, 0.9);">
 						<thead>
 							<tr>
 								<th>Nombre</th>
-								<th>Presupuesto</th>
-								<th>Tiempo</th>
-								<th>Preferencia</th>
-								<th>Es admin?</th>
+								
 								<th></th>
 								<th></th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${usuarios}" var="us">
+							<c:forEach items="${tiposDeAtraccion}" var="tipo">
 								<tr>
-									<td><c:out value="${us.username}" /></td>
-									<td><c:out value="${us.presupuesto}" /></td>
-									<td><c:out value="${us.tiempo}" /></td>
-									<td><c:out value="${us.preferencia}" /></td>
-									<td>
-									<c:choose>
-											<c:when test="${us.admin == 1}">
-          										  Si
-    									     </c:when>
-
-										     <c:otherwise>
-     									          No
-   										     </c:otherwise>
-									</c:choose> 
-									</td>
+									<td><c:out value="${tipo.descripcion}" /></td>
+									
 									<td><button type="button" class="btn btn-warning">Modificar</button></td>
 									<td><button type="button" class="btn btn-danger">Eliminar</button></td>
 								</tr>
@@ -56,7 +40,7 @@
 				</div>
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#exampleModal">Nuevo usuario</button>
+					data-target="#exampleModal">Nuevo tipo de atracción</button>
 
 				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1"
@@ -65,7 +49,7 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title" id="exampleModalLabel">Nueva
-									usuario</h5>
+									atracción</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">×</span>
@@ -80,35 +64,8 @@
 											required>
 
 
-									</div>
-									<div class="form-row">
-										<div class="col-md-6 mb-3">
-											<label for="validationDefault02">Presupuesto</label> <input
-												type="number" class="form-control" id="validationDefault02"
-												required>
-										</div>
-										<div class="col-md-6 mb-3">
-											<label for="validationDefault03">Tiempo</label> <input
-												type="number" class="form-control" id="validationDefault03"
-												required>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="col-md-4 mb-3">
-											<label for="validationDefault04">Es admin?</label> <input
-												type="number" class="form-control" id="validationDefault04"
-												required>
-										</div>
-										<div class="col-md-8 mb-3">
-											<label for="validationDefault05">Preferencia</label> <select
-												class="custom-select" id="validationDefault05" required=>
-												<option selected="" disabled="" value="">Elige
-													una...</option>
-												<option>Aventura</option>
-												<option>Paisaje</option>
-												<option>Degustación</option>
-											</select>
-										</div>
+									
+									
 
 									</div>
 									<button type="submit" class="btn btn-primary">Guardar</button>

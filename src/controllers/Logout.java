@@ -17,6 +17,8 @@ public class Logout extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.getSession().removeAttribute("currentUser");
+		request.getSession().removeAttribute("isAdmin");
+		request.getSession().removeAttribute("actual");
 		response.sendRedirect(".");
 	}
 }

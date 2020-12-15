@@ -20,7 +20,7 @@ import org.hibernate.cfg.Configuration;
 import dao.UsuarioDao;
 import model.Usuario;
 
-@WebServlet("/usuarios")
+@WebServlet("/admin-lista-usuarios")
 public class UsuariosListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,7 @@ public class UsuariosListServlet extends HttpServlet {
 			List<Usuario> usuarios = usuarioDao.all();
 			request.setAttribute("usuarios", usuarios);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/usuarios/list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/new-user.jsp");
 			dispatcher.forward(request, response);
 		} catch (HibernateException e) {
 			e.printStackTrace();

@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+
 import dao.UsuarioDao;
+import model.Usuario;
+import util.HibernateUtil;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
@@ -33,6 +37,7 @@ public class Login extends HttpServlet {
 		if (usuarioDao.validate(username, password)) {
 			request.getSession().setAttribute("currentUser", username);
 			request.getSession().setAttribute("isAdmin", usuarioDao.isAdmin(username));
+			request.getSession().setAttribute("actual", usuarioDao.actual(username));
 			if (usuarioDao.isAdmin(username).equals("true")) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin-saludo");
 				dispatcher.forward(request, response);
