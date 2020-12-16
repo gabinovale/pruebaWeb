@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <%@ include file="/admin/header.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <body>
-<h1 class="site-heading text-center text-white d-none d-lg-block">
+	<h1 class="site-heading text-center text-white d-none d-lg-block">
 		<span class="site-heading-lower">Tierra Media</span>
 	</h1>
 	<%@ include file="/admin/nav.jsp"%>
@@ -24,7 +24,8 @@
 								<th>Cupo Disponible</th>
 								<th>Tipo de Atracción</th>
 								<th>Tipo de Promo</th>
-								<th> </th>
+								<th>Incluye</th>
+								<th></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -37,6 +38,20 @@
 									<td><c:out value="${promo.cupo}" /></td>
 									<td><c:out value="${promo.tipoAtraccion}" /></td>
 									<td><c:out value="${promo.tipoPromo}" /></td>
+
+									<td>
+										<div class="dropdown">
+											<a class="dropdown-toggle text-uppercase text-expanded role="
+												button" data-toggle="dropdown" aria-haspopup="true"
+												aria-expanded="false" " href="#">Atracciones</a>
+											<div class="dropdown-menu">
+												<c:forEach items="${promociones}" var="atrac">
+													<a class="dropdown-item" href="#"><c:out value="${atrac.nombre}" /></a>
+												</c:forEach>
+											</div>
+										</div>
+									</td>
+
 									<td><button type="button" class="btn btn-warning">Modificar</button></td>
 									<td><button type="button" class="btn btn-danger">Eliminar</button></td>
 								</tr>
@@ -85,8 +100,7 @@
 									</div>
 									<div class="form-row">
 										<div class="col-md-6 mb-3">
-											<label for="validationDefault05">Tipo de Promo</label> 
-											<select
+											<label for="validationDefault05">Tipo de Promo</label> <select
 												class="custom-select" id="validationDefault05" required=>
 												<option selected="" disabled="" value="">Elige
 													una...</option>
@@ -96,8 +110,7 @@
 											</select>
 										</div>
 										<div class="col-md-6 mb-3">
-											<label for="validationDefault05">Tipo de Atracción</label> 
-											<select
+											<label for="validationDefault05">Tipo de Atracción</label> <select
 												class="custom-select" id="validationDefault05" required=>
 												<option selected="" disabled="" value="">Elige
 													una...</option>

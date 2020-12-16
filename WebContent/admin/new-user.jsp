@@ -36,17 +36,15 @@
 									<td><c:out value="${us.presupuesto}" /></td>
 									<td><c:out value="${us.tiempo}" /></td>
 									<td><c:out value="${us.preferencia}" /></td>
-									<td>
-									<c:choose>
+									<td><c:choose>
 											<c:when test="${us.admin == 1}">
           										  Si
     									     </c:when>
 
-										     <c:otherwise>
+											<c:otherwise>
      									          No
    										     </c:otherwise>
-									</c:choose> 
-									</td>
+										</c:choose></td>
 									<td><button type="button" class="btn btn-warning">Modificar</button></td>
 									<td><button type="button" class="btn btn-danger">Eliminar</button></td>
 								</tr>
@@ -64,55 +62,86 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Nueva
-									usuario</h5>
+								<h1 class="modal-title" id="exampleModalLabel">Nuevo
+									usuario</h1>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">×</span>
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+
+								<form name="nuevo-usuario" action="admin-nuevoUsuario" method="post">
 									<div class="form-row">
+										<div class="col-md-6 mb-3">
+											<label for="nombre">Nombre</label> <input name="username"
+												type="text" class="form-control" id="nombre" required>
 
-										<label for="validationDefault01">Nombre</label> <input
-											type="text" class="form-control" id="validationDefault01"
-											required>
-
+										</div>
+										<div class="col-md-6 mb-3">
+											<label for="pass">Password</label> <input name="password"
+												type="password" class="form-control" id="pass" required>
+										</div>
 
 									</div>
 									<div class="form-row">
 										<div class="col-md-6 mb-3">
-											<label for="validationDefault02">Presupuesto</label> <input
-												type="number" class="form-control" id="validationDefault02"
-												required>
+										
+											<label for="presupuesto">Presupuesto</label> 
+											<div class="input-group mb-3">
+											<input
+												name="presupuesto" type="number" class="form-control"
+												id="presupuesto" aria-describedby="basic-addon2" required>
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">monedas</span>
+											</div>
+											</div>
 										</div>
 										<div class="col-md-6 mb-3">
-											<label for="validationDefault03">Tiempo</label> <input
-												type="number" class="form-control" id="validationDefault03"
+											<label for="tiempo">Tiempo</label> 
+											<div class="input-group mb-3">
+											<input name="tiempo"
+												type="number" class="form-control" id="tiempo" step="0.5"
 												required>
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">horas</span>
+											</div>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col-md-4 mb-3">
-											<label for="validationDefault04">Es admin?</label> <input
-												type="number" class="form-control" id="validationDefault04"
-												required>
+
+											<div class="col-sm-12">
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox"
+														id="check-admin" name="is-admin"> <label
+														class="form-check-label" for="check-admin"> ¿Es
+														Admin? </label>
+												</div>
+											</div>
 										</div>
 										<div class="col-md-8 mb-3">
-											<label for="validationDefault05">Preferencia</label> <select
-												class="custom-select" id="validationDefault05" required=>
+											<label for="preferencia">Preferencia</label> <select
+												name="preferencia" class="custom-select" id="preferencia"
+												required=>
 												<option selected="" disabled="" value="">Elige
 													una...</option>
-												<option>Aventura</option>
-												<option>Paisaje</option>
-												<option>Degustación</option>
+												<c:forEach items="${tiposDeAtraccion}" var="tipo">
+													<option><c:out value="${tipo.descripcion}" /></option>
+												</c:forEach>
+
+
 											</select>
 										</div>
 
 									</div>
-									<button type="submit" class="btn btn-primary">Guardar</button>
+									<div class="modal-footer">
+										<button type="submit" class="btn btn-primary">Guardar</button>
+									</div>
 								</form>
+
+
 							</div>
 							<!-- <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

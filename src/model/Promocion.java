@@ -1,9 +1,13 @@
 package model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,6 +44,9 @@ public class Promocion {
 
 	@Column(name = "disponible")
 	private int disponible;
+	
+	@ManyToMany(mappedBy = "promociones")
+    private Set<Atraccion> atracciones = new HashSet<>();
 
 	public int getId() {
 		return id;
@@ -103,6 +110,14 @@ public class Promocion {
 
 	public void setDisponible(int disponible) {
 		this.disponible = disponible;
+	}
+
+	public Set<Atraccion> getAtracciones() {
+		return atracciones;
+	}
+
+	public void setAtracciones(Set<Atraccion> atracciones) {
+		this.atracciones = atracciones;
 	}
 	
 	

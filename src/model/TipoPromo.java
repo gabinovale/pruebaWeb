@@ -37,7 +37,7 @@ public class TipoPromo {
 
 	@Override
 	public String toString() {
-		return descripcion;
+		return this.descripcion;
 	}
 
 }

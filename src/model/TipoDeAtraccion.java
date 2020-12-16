@@ -41,7 +41,7 @@ public class TipoDeAtraccion {
 
 	@Override
 	public String toString() {
-		return descripcion;
+		return this.descripcion;
 	}
 	
 

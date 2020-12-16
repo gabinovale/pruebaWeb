@@ -6,7 +6,6 @@ import java.util.List;
 import org.hibernate.Session;
 
 import model.Atraccion;
-import model.Usuario;
 import util.HibernateUtil;
 
 public class AtraccionDao {

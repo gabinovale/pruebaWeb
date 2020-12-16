@@ -1,9 +1,7 @@
 package controllers;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,15 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
+import dao.TipoDeAtraccionDao;
 import dao.UsuarioDao;
+import model.TipoDeAtraccion;
 import model.Usuario;
 
-@WebServlet("/admin/nuevoUsuario")
+@WebServlet("/admin-nuevoUsuario")
 public class CrearUsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,16 +37,32 @@ public class CrearUsuarioServlet extends HttpServlet {
 		try {
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
+			int presupuesto = Integer.parseInt(request.getParameter("presupuesto"));
+			double tiempo = Double.parseDouble(request.getParameter("tiempo"));
+			String isAdmin = request.getParameter("is-admin");
+			int intAdmin = 0;
+//			if(isAdmin.equals("true")) {
+//				intAdmin = 1;
+//			}
+
+			
+			String preferencia = request.getParameter("preferencia");
+			
+			TipoDeAtraccionDao tipoDeAtraccionDao = new TipoDeAtraccionDao();
+			TipoDeAtraccion tipo = tipoDeAtraccionDao.findIdByName(preferencia);
 
 			Usuario usuario = new Usuario();
 			
 			usuario.setUsername(username);
 			usuario.setPassword(password);
-			usuario.setAdmin(0);
+			usuario.setAdmin(intAdmin);
+			usuario.setPresupuesto(presupuesto);
+			usuario.setTiempo(tiempo);
+			usuario.setPreferencia(tipo);
 
 			usuarioDao.create(usuario);
 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/usuarios");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin-lista-usuarios");
 			dispatcher.forward(request, response);
 		} catch (HibernateException e) {
 			e.printStackTrace();
