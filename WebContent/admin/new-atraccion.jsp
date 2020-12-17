@@ -31,6 +31,8 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${atracciones}" var="atr">
+							<c:choose>
+								<c:when test="${atr.disponible == 0}">
 								<tr>
 									<td><c:out value="${atr.nombre}" /></td>
 									<td><c:out value="${atr.costo}" /></td>
@@ -40,6 +42,12 @@
 									<td><button type="button" class="btn btn-warning">Modificar</button></td>
 									<td><button type="button" class="btn btn-danger">Eliminar</button></td>
 								</tr>
+								</c:when>
+
+											<c:otherwise>
+     									         
+   										     </c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</tbody>
 					</table>
@@ -62,42 +70,48 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+								<form name="nueva-atraccion" action="admin-nuevaAtraccion" method="post">
 									<div class="form-row">
 
-										<label for="validationDefault01">Nombre</label> <input
-											type="text" class="form-control" id="validationDefault01"
-											required>
+										<label for="validationDefault01">Nombre</label> <input name="nombre"
+												type="text" class="form-control" id="nombre" required>
 
 
 									</div>
 									<div class="form-row">
 										<div class="col-md-6 mb-3">
-											<label for="validationDefault02">Costo</label> <input
-												type="number" class="form-control" id="validationDefault02"
-												required>
+											<label for="validationDefault02">Costo</label><input
+												name="costo" type="number" class="form-control"
+												id="costo" aria-describedby="basic-addon2" required>
 										</div>
+										
 										<div class="col-md-6 mb-3">
-											<label for="validationDefault03">Tiempo</label> <input
-												type="number" class="form-control" id="validationDefault03"
-												required>
+											<label for="validationDefault03">Tiempo</label>
+											<div class="input-group mb-3">
+											 <input name="tiempo"
+												type="number" class="form-control" id="tiempo" required>
+												<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">horas</span>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="col-md-4 mb-3">
-											<label for="validationDefault04">Cupo</label> <input
-												type="number" class="form-control" id="validationDefault04"
-												required>
+											<label for="validationDefault04">Cupo</label> <input name="cupo"
+												type="number" class="form-control" id="cupo" required>
 										</div>
+										
 										<div class="col-md-8 mb-3">
-											<label for="validationDefault05">Tipo de Atracción</label> 
-											<select
-												class="custom-select" id="validationDefault05" required=>
+											<label for="tipo_de_atraccion_id">Tipo de Atracción</label> <select
+												name="tipo_de_atraccion_id" class="custom-select" id="tipo_de_atraccion_id"
+												required=>
 												<option selected="" disabled="" value="">Elige
 													una...</option>
-												<option>Aventura</option>
-												<option>Paisaje</option>
-												<option>Degustación</option>
+												<c:forEach items="${tiposDeAtraccion}" var="tipo">
+													<option><c:out value="${tipo.descripcion}" /></option>
+												</c:forEach>
+
+
 											</select>
 										</div>
 

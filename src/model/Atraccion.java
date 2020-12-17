@@ -1,6 +1,7 @@
 package model;
 
-import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -43,13 +45,15 @@ public class Atraccion {
 	@Column(name = "disponible")
 	private int disponible;
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-        name = "promocion_atraccion", 
-        joinColumns = { @JoinColumn(name = "atraccion_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "promocion_id") }
-    )
-    Set<Promocion> promociones = new HashSet<>();
+		
+	@ManyToMany(mappedBy = "atracciones")
+    private List<Promocion> promociones;
+	
+//	@ManyToMany(mappedBy = "atracciones")
+//    private List<Itinerario> itinerarios = new LinkedList<>();
+	
+	@OneToMany(mappedBy="atraccion")
+	private List<Compra> compras;
 
 	public int getId() {
 		return id;
@@ -109,11 +113,11 @@ public class Atraccion {
 		this.disponible = disponible;
 	}
 
-	public Set<Promocion> getPromociones() {
+	public List<Promocion> getPromociones() {
 		return promociones;
 	}
 
-	public void setPromociones(Set<Promocion> promociones) {
+	public void setPromociones(List<Promocion> promociones) {
 		this.promociones = promociones;
 	}
 	
@@ -121,5 +125,23 @@ public class Atraccion {
 	public String toString() {
 		return this.nombre;
 	}
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
+
+//	public List<Itinerario> getItinerarios() {
+//		return itinerarios;
+//	}
+//
+//	public void setItinerarios(List<Itinerario> itinerarios) {
+//		this.itinerarios = itinerarios;
+//	}
+	
+	
 	
 }

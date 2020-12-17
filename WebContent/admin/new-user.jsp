@@ -31,6 +31,7 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${usuarios}" var="us">
+							
 								<tr>
 									<td><c:out value="${us.username}" /></td>
 									<td><c:out value="${us.presupuesto}" /></td>

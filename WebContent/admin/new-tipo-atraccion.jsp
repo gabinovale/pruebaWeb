@@ -56,17 +56,11 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+								<form name="nuevo-tipo" action="admin-nuevoTipo" method="post">
 									<div class="form-row">
 
-										<label for="validationDefault01">Nombre</label> <input
-											type="text" class="form-control" id="validationDefault01"
-											required>
-
-
-									
-									
-
+										<label for="validationDefault01">Nombre</label> <input name="descripcion"
+												type="text" class="form-control" id="descripcion" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Guardar</button>
 								</form>

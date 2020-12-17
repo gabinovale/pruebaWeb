@@ -23,6 +23,22 @@ public class TipoDeAtraccionDao {
         return Collections.EMPTY_LIST;
     }
 	
+	public boolean create(TipoDeAtraccion tipoDeAtraccion) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			session.beginTransaction();
+			
+			int lastId = (int) session.createQuery("select max(tp.id) from TipoDeAtraccion tp").uniqueResult();
+			tipoDeAtraccion.setId(++lastId);
+			
+			session.save(tipoDeAtraccion);
+		    session.getTransaction().commit();
+			return true;
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+		return false;
+	}
+	
 	public TipoDeAtraccion findIdByName(String name) {
 		TipoDeAtraccion tipo = new TipoDeAtraccion();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {

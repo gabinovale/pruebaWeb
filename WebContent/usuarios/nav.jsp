@@ -18,7 +18,7 @@
 					class="nav-link text-uppercase text-expanded" href="comprar">Comprar</a>
 				</li>
 				<li class="nav-item px-lg-4"><a
-					class="nav-link text-uppercase text-expanded" href="itinerario">Itinerario</a>
+					class="nav-link text-uppercase text-expanded" href="listaItinerarios">Itinerario</a>
 				</li>
 				
 				<li class="nav-item dropdown px-lg-4"><a

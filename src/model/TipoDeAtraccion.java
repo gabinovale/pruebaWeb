@@ -22,6 +22,9 @@ public class TipoDeAtraccion {
 	@Column(name = "descripcion")
 	private String descripcion;
 	
+	@OneToMany(mappedBy="tipoAtraccion")
+	private List<Atraccion> atracciones;
+	
 
 	public int getId() {
 		return id;

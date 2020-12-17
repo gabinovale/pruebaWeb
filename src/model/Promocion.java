@@ -1,12 +1,15 @@
 package model;
 
-import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -45,8 +48,16 @@ public class Promocion {
 	@Column(name = "disponible")
 	private int disponible;
 	
-	@ManyToMany(mappedBy = "promociones")
-    private Set<Atraccion> atracciones = new HashSet<>();
+	
+    @JoinTable(
+        name = "promocion_atraccion", 
+        joinColumns = @JoinColumn(name = "promocion_id ", nullable = false), 
+        inverseJoinColumns = @JoinColumn(name = "atraccion_id", nullable = false)
+    )
+    @ManyToMany(cascade = { CascadeType.ALL })
+	private List<Atraccion> atracciones;
+	
+	
 
 	public int getId() {
 		return id;
@@ -112,11 +123,11 @@ public class Promocion {
 		this.disponible = disponible;
 	}
 
-	public Set<Atraccion> getAtracciones() {
+	public List<Atraccion> getAtracciones() {
 		return atracciones;
 	}
 
-	public void setAtracciones(Set<Atraccion> atracciones) {
+	public void setAtracciones(List<Atraccion> atracciones) {
 		this.atracciones = atracciones;
 	}
 	

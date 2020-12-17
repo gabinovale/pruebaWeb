@@ -36,8 +36,22 @@ public class UsuarioDao {
 			
 			int lastId = (int) session.createQuery("select max(u.id) from Usuario u").uniqueResult();
 			usuario.setId(++lastId);
-			System.out.println("dentro del create");
 			session.save(usuario);
+		    session.getTransaction().commit();
+			return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return false;
+	}
+	
+	public boolean update(Usuario usuario) {
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			session.beginTransaction();
+			
+			
+			
+			session.saveOrUpdate(usuario);
 		    session.getTransaction().commit();
 			return true;
         } catch (Exception e) {

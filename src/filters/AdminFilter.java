@@ -25,7 +25,9 @@ public class AdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		String admin = (String) ((HttpServletRequest)request).getSession().getAttribute("isAdmin");
+		
+		String admin = "";
+		admin = (String) ((HttpServletRequest)request).getSession().getAttribute("isAdmin");
 
 		if (admin.equals("true")) {
 			// pass the request along the filter chain

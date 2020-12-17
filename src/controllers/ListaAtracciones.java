@@ -13,21 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.HibernateException;
 
 import dao.AtraccionDao;
+import dao.TipoDeAtraccionDao;
 import dao.UsuarioDao;
 import model.Atraccion;
+import model.TipoDeAtraccion;
 import model.Usuario;
 
-/**
- * Servlet implementation class ListaAtracciones
- */
 @WebServlet("/admin-atracciones")
 public class ListaAtracciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private AtraccionDao atraccionDao;
+    private TipoDeAtraccionDao tipoDeAtraccionDao;
 
 	public void init() {
 		atraccionDao = new AtraccionDao();
+		tipoDeAtraccionDao = new TipoDeAtraccionDao();
 	}
 
 
@@ -41,6 +42,9 @@ public class ListaAtracciones extends HttpServlet {
 		try {
 			List<Atraccion> atracciones = atraccionDao.all();
 			request.setAttribute("atracciones", atracciones);
+			
+			List<TipoDeAtraccion> tiposDeAtracciones = tipoDeAtraccionDao.all();
+			request.setAttribute("tiposDeAtraccion", tiposDeAtracciones);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/new-atraccion.jsp");
 			dispatcher.forward(request, response);
@@ -59,3 +63,9 @@ public class ListaAtracciones extends HttpServlet {
 	}
 
 }
+
+
+
+
+
+

@@ -11,15 +11,20 @@ import util.HibernateUtil;
 public class PromocionDao {
 	
 	public List<Promocion> all() {
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+		List<Promocion> retorna = Collections.EMPTY_LIST;
+		
+        try {
+        	Session session =  HibernateUtil.getSessionFactory().openSession();
         	
-            return (List<Promocion>) session.createQuery("from Promocion P").getResultList();
+            retorna = (List<Promocion>) session.createQuery("from Promocion P").getResultList();
             
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+        	
+			
         }
-        return Collections.EMPTY_LIST;
+        return retorna;
     }
 
 }

@@ -9,6 +9,8 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 import model.Atraccion;
+import model.Compra;
+import model.Itinerario;
 import model.Promocion;
 import model.TipoDeAtraccion;
 import model.TipoPromo;
@@ -39,6 +41,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(TipoDeAtraccion.class);
                 configuration.addAnnotatedClass(Promocion.class);
                 configuration.addAnnotatedClass(TipoPromo.class);
+                configuration.addAnnotatedClass(Itinerario.class);
+                configuration.addAnnotatedClass(Compra.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();

@@ -38,18 +38,23 @@
 									<td><c:out value="${promo.cupo}" /></td>
 									<td><c:out value="${promo.tipoAtraccion}" /></td>
 									<td><c:out value="${promo.tipoPromo}" /></td>
-
+									
 									<td>
-										<div class="dropdown">
+									
+									<div class="dropdown">
 											<a class="dropdown-toggle text-uppercase text-expanded role="
 												button" data-toggle="dropdown" aria-haspopup="true"
 												aria-expanded="false" " href="#">Atracciones</a>
 											<div class="dropdown-menu">
-												<c:forEach items="${promociones}" var="atrac">
+												<c:forEach items="${promo.atracciones}" var="atrac">
 													<a class="dropdown-item" href="#"><c:out value="${atrac.nombre}" /></a>
 												</c:forEach>
 											</div>
-										</div>
+									</div> 
+									
+									
+										
+										
 									</td>
 
 									<td><button type="button" class="btn btn-warning">Modificar</button></td>

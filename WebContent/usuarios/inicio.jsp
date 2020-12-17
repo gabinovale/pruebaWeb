@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="/usuarios/header.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <body>
 <h1 class="site-heading text-center text-white d-none d-lg-block">
     <span class="site-heading-lower">Tierra Media</span>
@@ -11,19 +12,10 @@
 <%@ include file="/usuarios/nav.jsp"%>
 <section class="page-section about-heading">
 	<div id="wrapper">
-		<%
-
-   	String usuario = (String) request.getSession().getAttribute("currentUser");
-	
-%>
-
-		<%
-
-  	if (usuario != null) 
-		%>
+		<c:set var="usuario" value="${actual.username}"/>
 		<h1 class="site-heading text-center text-white">
-    <span class="site-heading-lower">Bienvenid@<%out.print(" "+usuario);%></span>
-  </h1>
+    	<span class="site-heading-lower">Bienvenid@ &nbsp;<c:out value="${usuario}"/></span>
+  		</h1>
 
 		
 
