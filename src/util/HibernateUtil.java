@@ -27,7 +27,7 @@ public class HibernateUtil {
 
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.sqlite.JDBC");
-                settings.put(Environment.URL, "jdbc:sqlite:C:\\Users\\Martin\\eclipse-workspace\\pruebaWeb3\\WebContent\\db\\TierraMedia.db");
+                settings.put(Environment.URL, "jdbc:sqlite:/Users/gabino/Documents/workspace/pruebaWeb/WebContent/db/TierraMedia.db");
                 settings.put(Environment.DIALECT, "com.enigmabridge.hibernate.dialect.SQLiteDialect");
 
                 settings.put(Environment.SHOW_SQL, "true");
